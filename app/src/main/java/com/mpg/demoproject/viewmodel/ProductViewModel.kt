@@ -1,7 +1,9 @@
-package com.chethan.demoproject
+package com.mpg.demoproject.viewmodel
 
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
+import com.mpg.demoproject.data.repository.DataRepository
+import com.mpg.demoproject.data.model.ProductFamily
 
 
 class ProductViewModel(val dataRepository: DataRepository) : ViewModel() {

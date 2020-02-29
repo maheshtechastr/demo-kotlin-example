@@ -1,5 +1,7 @@
-package com.chethan.demoproject
+package com.mpg.demoproject.data.repository
 
+import com.mpg.demoproject.data.model.ProductFamily
+import com.mpg.demoproject.data.network.NetWorkApi
 import retrofit2.Call
 import retrofit2.Response
 

@@ -1,4 +1,4 @@
-package com.chethan.demoproject
+package com.mpg.demoproject
 
 import org.junit.Test
 

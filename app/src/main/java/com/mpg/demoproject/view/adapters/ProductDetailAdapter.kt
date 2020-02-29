@@ -1,4 +1,4 @@
-package com.chethan.demoproject.view
+package com.mpg.demoproject.view.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
-import com.chethan.demoproject.ProductFamily
-import com.chethan.demoproject.R
+import com.mpg.demoproject.data.model.ProductFamily
+import com.mpg.demoproject.R
 
 
 class ProductDetailAdapter(private val productFamily: ProductFamily) :

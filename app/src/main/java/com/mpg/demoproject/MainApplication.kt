@@ -1,4 +1,4 @@
-package com.chethan.demoproject
+package com.mpg.demoproject
 
 import android.app.Application
 

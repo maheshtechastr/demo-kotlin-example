@@ -1,4 +1,4 @@
-package com.chethan.demoproject
+package com.mpg.demoproject.data.model
 
 import java.io.Serializable
 

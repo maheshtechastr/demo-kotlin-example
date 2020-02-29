@@ -1,4 +1,4 @@
-package com.chethan.demoproject
+package com.mpg.demoproject.view.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,9 +8,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import com.chethan.demoproject.view.ProductDetailAdapter
-import com.chethan.demoproject.view.ProductListAdapter
-import kotlinx.android.synthetic.main.fragment_vehicle.*
+import com.mpg.demoproject.R
+import com.mpg.demoproject.data.model.ProductFamily
+import com.mpg.demoproject.view.adapters.ProductDetailAdapter
 
 
 class ProductDetailFragment : Fragment() {
@@ -23,7 +23,8 @@ class ProductDetailFragment : Fragment() {
         fun newInstance(productFamily: ProductFamily): ProductDetailFragment {
             val args = Bundle()
             args.putSerializable(KEY_PRODUCT, productFamily)
-            val fragment = ProductDetailFragment()
+            val fragment =
+                ProductDetailFragment()
             fragment.arguments = args
             return fragment
         }
@@ -43,7 +44,8 @@ class ProductDetailFragment : Fragment() {
 
         val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView!!.layoutManager = LinearLayoutManager(view!!.context, LinearLayout.VERTICAL, false)
-        var productDetailAdapter: ProductDetailAdapter = ProductDetailAdapter(product)
+        var productDetailAdapter: ProductDetailAdapter =
+            ProductDetailAdapter(product)
         recyclerView.adapter = productDetailAdapter
 
     }
