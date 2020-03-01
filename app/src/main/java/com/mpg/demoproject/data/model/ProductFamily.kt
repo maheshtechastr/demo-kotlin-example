@@ -2,7 +2,11 @@ package com.mpg.demoproject.data.model
 
 import java.io.Serializable
 
-
+/**
+ * @Author $Mahesh Gupta
+ * @class ProductFamily
+ * @date 28-Feb-2020
+ * */
 data class ProductFamily(
     var id: Int,
     var products: List<Products>,

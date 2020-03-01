@@ -1,16 +1,16 @@
 package com.mpg.demoproject.view.fragments
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mpg.demoproject.R
 import com.mpg.demoproject.data.model.ProductFamily
 import com.mpg.demoproject.view.adapters.ProductDetailAdapter
+import kotlinx.android.synthetic.main.fragment_vehicle.view.*
 
 
 class ProductDetailFragment : Fragment() {
@@ -41,12 +41,9 @@ class ProductDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerView)
-        recyclerView!!.layoutManager = LinearLayoutManager(view!!.context, LinearLayout.VERTICAL, false)
-        var productDetailAdapter: ProductDetailAdapter =
-            ProductDetailAdapter(product)
-        recyclerView.adapter = productDetailAdapter
+        view.recyclerView.layoutManager = LinearLayoutManager(view.context, RecyclerView.VERTICAL, false)
+        val productDetailAdapter = ProductDetailAdapter(product)
+        view.recyclerView.adapter = productDetailAdapter
 
     }
 }

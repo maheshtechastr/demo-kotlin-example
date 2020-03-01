@@ -5,6 +5,10 @@ import com.mpg.demoproject.data.network.NetWorkApi
 import retrofit2.Call
 import retrofit2.Response
 
+/**
+ * @Author $Mahesh Gupta
+
+ * */
 class DataRepository(val netWorkApi: NetWorkApi) {
 
     fun getProducts(onProductData: OnProductData) {

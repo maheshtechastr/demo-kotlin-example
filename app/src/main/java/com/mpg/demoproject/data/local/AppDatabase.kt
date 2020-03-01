@@ -1,75 +1,58 @@
-/*
- * Copyright (C) 2019 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+/**
+ * @Author $Mahesh Gupta
+ * @class AppDatabase
+ * @date 01-Mar-2020
+ * */
 
-package com.example.android.kotlincoroutines.main
+package com.mpg.demoproject.data.local
 
 import android.content.Context
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Database
-import androidx.room.Entity
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.PrimaryKey
-import androidx.room.Query
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
+import com.mpg.demoproject.data.model.Products
 
 /**
- * Title represents the title fetched from the network
+ * Products represents the products fetched from the network
  */
-@Entity
-data class Title constructor(val title: String, @PrimaryKey val id: Int = 0)
+//@Entity
+//data class Products constructor(val products: String, @PrimaryKey val id: Int = 0)
 
 /***
- * Very small database that will hold one title
+ * Very small database that will hold one products
  */
 @Dao
-interface TitleDao {
+interface ProductsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertTitle(title: Title)
+    fun insertProducts(products: Products)
 
-    @get:Query("select * from Title where id = 0")
-    val titleLiveData: LiveData<Title?>
+    @get:Query("select * from Products where id = 0")
+    val productsLiveData: LiveData<Products?>
 }
 
 /**
- * TitleDatabase provides a reference to the dao to repositories
+ * ProductsDatabase provides a reference to the dao to repositories
  */
-@Database(entities = [Title::class], version = 1, exportSchema = false)
-abstract class TitleDatabase : RoomDatabase() {
-    abstract val titleDao: TitleDao
+@Database(entities = [Products::class], version = 1, exportSchema = false)
+abstract class ProductsDatabase : RoomDatabase() {
+    abstract val productsDao: ProductsDao
 }
 
-private lateinit var INSTANCE: TitleDatabase
+private lateinit var INSTANCE: ProductsDatabase
 
 /**
  * Instantiate a database from a context.
  */
-fun getDatabase(context: Context): TitleDatabase {
-    synchronized(TitleDatabase::class) {
+fun getDatabase(context: Context, dbName: String): ProductsDatabase {
+    synchronized(ProductsDatabase::class) {
         if (!::INSTANCE.isInitialized) {
             INSTANCE = Room
-                    .databaseBuilder(
-                            context.applicationContext,
-                            TitleDatabase::class.java,
-                            "titles_db"
-                    )
-                    .fallbackToDestructiveMigration()
-                    .build()
+                .databaseBuilder(
+                    context.applicationContext,
+                    ProductsDatabase::class.java,
+                    dbName
+                )
+                .fallbackToDestructiveMigration()
+                .build()
         }
     }
     return INSTANCE

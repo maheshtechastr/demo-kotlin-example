@@ -1,7 +1,7 @@
 package com.mpg.demoproject.view.activities
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.mpg.demoproject.R
 import com.mpg.demoproject.view.fragments.ProductListFragment
 
